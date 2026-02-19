@@ -6,12 +6,13 @@ import Form from "./components/Form";
 
 const App = () => {
   //STATES
-  const items = useStore((state) => state.items);
   const budget = useStore((state) => state.budget);
+  const items = useStore((state) => state.items);
 
   //ACTIONS
   const setBudget = useStore((state) => state.setBudget);
   const setCart = useStore((state) => state.setCart);
+  const removeCartItem = useStore((state) => state.removeCartItem);
 
   //LOCAL STATES
   const [details, setDetails] = useState<GroceryItem>({
@@ -21,7 +22,7 @@ const App = () => {
     quantity: 1,
   });
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -37,6 +38,11 @@ const App = () => {
     setDetails({ id: "", name: "", price: 0, quantity: 1 });
   };
 
+  const updateBudget = items.reduce(
+    (T, item) => (T = budget - item.price * item.quantity),
+    0,
+  );
+
   return (
     <div className="flex justify-center flex-col items-center">
       <h1>Budget Buddy </h1>
@@ -51,6 +57,7 @@ const App = () => {
         />
       </div>
       <p>Input your budget above</p>
+      {budget && updateBudget}
 
       <div>
         {isOpen && (
@@ -60,6 +67,24 @@ const App = () => {
             handleSubmit={handleSubmit}
           />
         )}
+      </div>
+
+      <div>
+        {items.map((item) => {
+          return (
+            <div className="flex gap-2">
+              <p>{item.name}</p>
+              <p>{item.price}</p>
+              <p>{item.quantity}</p>
+              <button
+                className="bg-amber-300"
+                onClick={() => removeCartItem(item.id)}
+              >
+                remove
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

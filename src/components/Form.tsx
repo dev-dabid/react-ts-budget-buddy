@@ -15,7 +15,7 @@ const Form = ({ valueProp, handleChange, handleSubmit }: InputProps) => {
     <form
       onSubmit={(e: SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
-        handleSubmit;
+        handleSubmit();
       }}
     >
       <Input inputName={"name"} inputValue={name} inputHandler={handleChange} />

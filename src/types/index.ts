@@ -10,4 +10,5 @@ export interface BudgetBuddy {
   items: GroceryItem[];
   setBudget: (value: number) => void;
   setCart: (value: GroceryItem) => void;
+  removeCartItem: (id: string) => void;
 }

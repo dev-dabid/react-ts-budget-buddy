@@ -12,6 +12,13 @@ export const useStore = create<BudgetBuddy>()(
         set((state) => ({ budget: isNaN(value) ? state.budget : value })),
 
       setCart: (value) => set((state) => ({ items: [...state.items, value] })),
+
+      removeCartItem: (id: string) =>
+        set((state) => ({
+          items: state.items.filter((item) => {
+            return item.id !== id;
+          }),
+        })),
     }),
     { name: "budget-storage" },
   ),
