@@ -2,6 +2,7 @@ import type { ChangeEvent } from "react";
 import type { GroceryItem } from "./types/index";
 import { useStore } from "./store/store";
 import { useState } from "react";
+import Form from "./components/Form";
 
 const App = () => {
   //STATES
@@ -46,28 +47,11 @@ const App = () => {
         }
       />
       <div>
-        <input
-          name="name"
-          placeholder="Product Name"
-          type="text"
-          value={details.name}
-          onChange={handleChange}
+        <Form
+          valueProp={details}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
         />
-        <input
-          name="price"
-          placeholder="Price"
-          type="text"
-          value={details.price}
-          onChange={handleChange}
-        />
-        <input
-          name="quantity"
-          placeholder="quantity"
-          type="text"
-          value={details.quantity}
-          onChange={handleChange}
-        />
-        <button onClick={handleSubmit}>submit</button>
       </div>
     </div>
   );
