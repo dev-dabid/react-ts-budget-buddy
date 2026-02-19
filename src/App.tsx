@@ -21,6 +21,8 @@ const App = () => {
     quantity: 1,
   });
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -35,23 +37,29 @@ const App = () => {
     setDetails({ id: "", name: "", price: 0, quantity: 1 });
   };
 
-  console.log(items);
-
   return (
-    <div>
-      <input
-        type="text"
-        value={budget}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setBudget(Number(e.target.value))
-        }
-      />
-      <div>
-        <Form
-          valueProp={details}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
+    <div className="flex justify-center flex-col items-center">
+      <h1>Budget Buddy </h1>
+      <div className="border-b-2 w-full max-w-70">
+        <input
+          className="outline-none text-3xl"
+          type="text"
+          value={budget}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            setBudget(Number(e.target.value))
+          }
         />
+      </div>
+      <p>Input your budget above</p>
+
+      <div>
+        {isOpen && (
+          <Form
+            valueProp={details}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        )}
       </div>
     </div>
   );
