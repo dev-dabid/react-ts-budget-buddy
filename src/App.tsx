@@ -39,9 +39,11 @@ const App = () => {
   };
 
   const updateBudget = items.reduce(
-    (T, item) => (T = budget - item.price * item.quantity),
+    (T, item) => T + item.price * item.quantity,
     0,
   );
+
+  const subtractBudget = budget - updateBudget;
 
   return (
     <div className="flex justify-center flex-col items-center">
@@ -57,7 +59,7 @@ const App = () => {
         />
       </div>
       <p>Input your budget above</p>
-      {budget && updateBudget}
+      {budget && subtractBudget}
 
       <div>
         {isOpen && (
@@ -69,22 +71,34 @@ const App = () => {
         )}
       </div>
 
-      <div>
-        {items.map((item) => {
-          return (
-            <div className="flex gap-2">
-              <p>{item.name}</p>
-              <p>{item.price}</p>
-              <p>{item.quantity}</p>
-              <button
-                className="bg-amber-300"
-                onClick={() => removeCartItem(item.id)}
-              >
-                remove
-              </button>
-            </div>
-          );
-        })}
+      <div className="w-full">
+        <table className="w-full text-start">
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+          {items.map((item) => {
+            return (
+              <tr className="text-center">
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+                <td>{item.quantity}</td>
+                <td>
+                  {
+                    <button
+                      className="bg-amber-300"
+                      onClick={() => removeCartItem(item.id)}
+                    >
+                      remove
+                    </button>
+                  }
+                </td>
+              </tr>
+            );
+          })}
+        </table>
       </div>
     </div>
   );
