@@ -93,35 +93,46 @@ const App = () => {
         )}
       </div>
 
-      <div className="w-full mt-15 ">
-        <p className="mb-2 sm: text-xl">Products Table</p>
-        <div className="w-full border rounded">
-          <table className="w-full text-start">
-            <tr className="border-b">
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Actions</th>
-            </tr>
-            {items.map((item) => {
-              return (
-                <tr className="text-center">
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
-                  <td>{item.quantity}</td>
-                  <td>
-                    {
-                      <button
-                        className="bg-amber-300"
-                        onClick={() => removeCartItem(item.id)}
-                      >
-                        remove
-                      </button>
-                    }
+      <div className="w-full mt-15">
+        <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
+        <div className="w-full border rounded overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b bg-gray-50">
+                <th className="p-3 text-center">Product</th>
+                <th className="p-3 text-center">Price</th>
+                <th className="p-3 text-center">Quantity</th>
+                <th className="p-3 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((item) => (
+                <tr
+                  key={item.id}
+                  className="border-b last:border-0 hover:bg-gray-50 transition-colors"
+                >
+                  <td className="p-3">
+                    <div className="flex justify-center">
+                      <span className="w-full max-w-[120px] text-start">
+                        {item.name}
+                      </span>
+                    </div>
+                  </td>
+
+                  <td className="p-3 text-center">₱{item.price}</td>
+                  <td className="p-3 text-center">{item.quantity}</td>
+
+                  <td className="p-3 text-center">
+                    <button
+                      className="bg-amber-300 px-2 py-1 rounded hover:bg-amber-400 transition-colors text-sm"
+                      onClick={() => removeCartItem(item.id)}
+                    >
+                      remove
+                    </button>
                   </td>
                 </tr>
-              );
-            })}
+              ))}
+            </tbody>
           </table>
         </div>
       </div>
