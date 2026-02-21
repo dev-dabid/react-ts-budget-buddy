@@ -97,7 +97,7 @@ const App = () => {
         <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
         <div className="w-full border rounded overflow-hidden">
           <table className="w-full">
-            <thead>
+            <thead className="text-md sm:text-2xl">
               <tr className="border-b bg-gray-50">
                 <th className="p-3 text-center">Product</th>
                 <th className="p-3 text-center">Price</th>
