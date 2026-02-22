@@ -27,8 +27,11 @@ const App = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value, type } = e.target;
+
+    if (type === "number" && Number(value) < 0) {
+      return;
+    }
 
     setDetails((prev) => {
       return { ...prev, [name]: value };
