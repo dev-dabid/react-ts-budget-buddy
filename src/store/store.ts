@@ -9,7 +9,13 @@ export const useStore = create<BudgetBuddy>()(
       items: [],
 
       setBudget: (value: number) =>
-        set((state) => ({ budget: isNaN(value) ? state.budget : value })),
+        set((state) => ({
+          budget: isNaN(value)
+            ? state.budget
+            : value >= 999999999
+              ? state.budget
+              : value,
+        })),
 
       setCart: (value) => set((state) => ({ items: [...state.items, value] })),
 
