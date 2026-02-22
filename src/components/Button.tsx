@@ -1,6 +1,6 @@
 const Button = () => {
   return (
-    <button className="bg-white rounded-[5px] px-2.5 pt-2.5 shadow-[5px_4px_0px] shadow-gray-400 border border-[#F39B9A]">
+    <button className="bg-white rounded-[5px] px-2.5 pt-2.5 shadow-[5px_4px_0px] shadow-gray-400 border border-[#F39B9A] active:translate-y-2 hover:shadow-[7px_6px_0px] active:shadow-[3px_2px_0px]">
       <p className="text-lg">
         <span className="font-bold text-2xl">+</span> Add Products
       </p>
