@@ -41,6 +41,7 @@ const Form = ({
         <div>
           <p className="truncate wrap-break-word">Product Name</p>
           <Input
+            type={"text"}
             inputName={"name"}
             inputValue={name}
             max={30}
@@ -51,6 +52,7 @@ const Form = ({
         <div>
           <p>Price</p>
           <Input
+            type={"number"}
             inputName={"price"}
             inputValue={price}
             inputHandler={handleChange}
@@ -60,6 +62,7 @@ const Form = ({
         <div>
           <p>Quantity</p>
           <Input
+            type={"number"}
             inputName={"quantity"}
             inputValue={quantity}
             inputHandler={handleChange}
