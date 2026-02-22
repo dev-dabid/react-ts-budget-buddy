@@ -9,6 +9,7 @@ interface InputProps {
 const Input = ({ inputName, inputValue, inputHandler }: InputProps) => {
   return (
     <input
+      className="border w-full rounded p-1.5"
       name={inputName}
       type="text"
       value={inputValue}

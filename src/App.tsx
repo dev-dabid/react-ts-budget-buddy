@@ -70,7 +70,7 @@ const App = () => {
       </div>
 
       <div className="flex justify-start w-full mt-13">
-        <Button />
+        <Button clickEvent={setIsOpen} />
       </div>
 
       <div className="text-center mt-15">
@@ -83,15 +83,16 @@ const App = () => {
         </p>
       </div>
 
-      <div>
-        {isOpen && (
+      {isOpen && (
+        <div className="inset-0 bg-gray-400/40 absolute flex justify-center items-center max-h-full">
           <Form
             valueProp={details}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            closeModal={setIsOpen}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="w-full mt-15">
         <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
@@ -113,7 +114,7 @@ const App = () => {
                 >
                   <td className="p-3">
                     <div className="flex justify-center">
-                      <span className="w-full max-w-[120px] text-start">
+                      <span className="w-full max-w-[120px] text-center">
                         {item.name}
                       </span>
                     </div>
