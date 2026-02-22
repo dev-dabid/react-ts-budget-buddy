@@ -107,32 +107,40 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
-              {items.map((item) => (
-                <tr
-                  key={item.id}
-                  className="border-b last:border-0 hover:bg-gray-50 transition-colors"
-                >
-                  <td className="p-3">
-                    <div className="flex justify-center">
-                      <span className="w-full max-w-[120px] text-center">
-                        {item.name}
-                      </span>
-                    </div>
-                  </td>
-
-                  <td className="p-3 text-center">₱{item.price}</td>
-                  <td className="p-3 text-center">{item.quantity}</td>
-
-                  <td className="p-3 text-center">
-                    <button
-                      className="bg-amber-300 px-2 py-1 rounded hover:bg-amber-400 transition-colors text-sm"
-                      onClick={() => removeCartItem(item.id)}
-                    >
-                      remove
-                    </button>
+              {items.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="text-center py-20 text-gray-500">
+                    Your cart is empty.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                items.map((item) => (
+                  <tr
+                    key={item.id}
+                    className="border-b last:border-0 hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="p-3">
+                      <div className="flex justify-center">
+                        <span className="w-full max-w-[120px] text-center">
+                          {item.name}
+                        </span>
+                      </div>
+                    </td>
+
+                    <td className="p-3 text-center">₱{item.price}</td>
+                    <td className="p-3 text-center">{item.quantity}</td>
+
+                    <td className="p-3 text-center">
+                      <button
+                        className="bg-amber-300 px-2 py-1 rounded hover:bg-amber-400 transition-colors text-sm"
+                        onClick={() => removeCartItem(item.id)}
+                      >
+                        remove
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
