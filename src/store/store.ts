@@ -4,7 +4,7 @@ import type { BudgetBuddy } from "../types";
 
 export const useStore = create<BudgetBuddy>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       budget: 0,
       items: [],
 
