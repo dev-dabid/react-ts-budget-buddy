@@ -43,6 +43,7 @@ const Form = ({
           <Input
             inputName={"name"}
             inputValue={name}
+            max={30}
             inputHandler={handleChange}
           />
         </div>

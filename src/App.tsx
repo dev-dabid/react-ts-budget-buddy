@@ -117,7 +117,7 @@ const App = () => {
                 items.map((item) => (
                   <tr
                     key={item.id}
-                    className="border-b last:border-0 hover:bg-gray-50 transition-colors"
+                    className="border-b last:border-0 hover:bg-gray-50 transition-colors text-sm"
                   >
                     <td className="p-3">
                       <div className="flex justify-center">
