@@ -29,11 +29,27 @@ const App = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
 
-    if (type === "number" && Number(value) < 0) {
-      return;
-    }
-
     setDetails((prev) => {
+      if (type === "number") {
+        if (value === "") {
+          return { ...prev, [name]: "" };
+        }
+
+        let num = Number(value);
+
+        if (num < 0) num = 0;
+
+        if (name === "quantity" && num > 999) {
+          num = 999;
+        }
+
+        if (name === "price" && num > 999999) {
+          num = 999999;
+        }
+
+        return { ...prev, [name]: num };
+      }
+
       return { ...prev, [name]: value };
     });
   };

@@ -44,7 +44,7 @@ const Form = ({
             type={"text"}
             inputName={"name"}
             inputValue={name}
-            max={30}
+            maxChar={30}
             inputHandler={handleChange}
           />
         </div>
@@ -56,6 +56,8 @@ const Form = ({
             inputName={"price"}
             inputValue={price}
             inputHandler={handleChange}
+            minNum={0}
+            maxNum={9999}
           />
         </div>
 
