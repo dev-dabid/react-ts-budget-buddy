@@ -97,7 +97,40 @@ const App = () => {
         </div>
       )}
 
-      <div className="w-full mt-15">
+      <div className="sm:hidden w-full mt-15">
+        <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
+        {items.length === 0 ? (
+          <div className="text-center py-10 text-gray-500">
+            <p className="text-center">Your cart is empty</p>
+          </div>
+        ) : (
+          <div className=" grid grid-cols-2 w-full gap-2">
+            {items.map((item) => (
+              <div
+                key={item.id}
+                className="border rounded-lg p-4 shadow-sm flex flex-col"
+              >
+                <div className="font-medium truncate">{item.name}</div>
+                <div className="text-sm text-gray-600">
+                  Price: ₱{item.price}
+                </div>
+                <div className="text-sm text-gray-600">
+                  Quantity: {item.quantity}
+                </div>
+
+                <button
+                  className="mt-2 bg-amber-300 px-3 py-1 rounded hover:bg-amber-400 text-sm"
+                  onClick={() => removeCartItem(item.id)}
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="hidden sm:table w-full mt-15">
         <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
         <div className="w-full border rounded overflow-hidden">
           <table className="w-full">
