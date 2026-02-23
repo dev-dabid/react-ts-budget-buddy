@@ -133,7 +133,7 @@ const App = () => {
       <div className="hidden sm:table w-full mt-15">
         <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
         <div className="w-full border rounded overflow-hidden">
-          <table className="w-full">
+          <table className="w-full table-fixed">
             <thead className="text-md sm:text-2xl">
               <tr className="border-b bg-gray-50">
                 <th className="p-3 text-center">Product</th>
