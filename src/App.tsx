@@ -98,13 +98,13 @@ const App = () => {
       )}
 
       <div className="sm:hidden w-full mt-15">
-        <p className="mb-2 sm:text-xl font-semibold">Products Table</p>
+        <p className="mb-2 text-lg sm:text-xl font-semibold">Products Table</p>
         {items.length === 0 ? (
           <div className="text-center py-10 text-gray-500">
             <p className="text-center">Your cart is empty</p>
           </div>
         ) : (
-          <div className=" grid grid-cols-2 w-full gap-2">
+          <div className=" grid grid-cols-2 w-full gap-3">
             {items.map((item) => (
               <div
                 key={item.id}
