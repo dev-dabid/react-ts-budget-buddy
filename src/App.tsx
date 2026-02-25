@@ -2,6 +2,12 @@ import type { ChangeEvent } from "react";
 import type { GroceryItem } from "./types/index";
 import { useStore } from "./store/store";
 import { useState } from "react";
+import {
+  calculateTotal,
+  getRemainingBudget,
+  checkOverBudget,
+} from "./helpers/budgetCalculations";
+
 import Form from "./components/Form";
 import Button from "./components/Button";
 import bblogo from "./assets/budget-buddy-logo.svg";
@@ -10,6 +16,13 @@ const App = () => {
   //STATES
   const budget = useStore((state) => state.budget);
   const items = useStore((state) => state.items);
+
+  //HELPERS
+  const total = calculateTotal(items);
+  const remaining = getRemainingBudget(budget, total);
+  const isOverBudget = checkOverBudget(budget, total, 100);
+  const isDanger = checkOverBudget(budget, total, 80);
+  const isWarning = checkOverBudget(budget, total, 50);
 
   //ACTIONS
   const setBudget = useStore((state) => state.setBudget);
@@ -59,23 +72,6 @@ const App = () => {
     setDetails({ id: "", name: "", price: 0, quantity: 1 });
   };
 
-  const updateBudget = items.reduce(
-    (t, item) => t + item.price * item.quantity,
-    0,
-  );
-
-  const totalPriceProducts = items.reduce(
-    (t, item) => t + item.price * item.quantity,
-    0,
-  );
-
-  const subtractBudget = budget - updateBudget;
-
-  const getPercentageOf = (percentage: number, total: number) =>
-    (percentage / 100) * total;
-
-  const isOvertheBudget = totalPriceProducts >= getPercentageOf(80, budget);
-
   return (
     <div className="flex justify-center flex-col items-center itim-regular p-2 max-w-300 mx-auto">
       <img src={bblogo} alt="" />
@@ -100,12 +96,23 @@ const App = () => {
       <div className="text-center mt-15">
         <p className="text-lg sm:text-2xl">Budget {`(-)`} minus Products</p>
         <p
-          className={`text-5xl sm:text-7xl ${isOvertheBudget ? "text-red-500" : "text-[#F39B9A]"} `}
+          className={`text-5xl sm:text-7xl ${isOverBudget ? "text-red-700" : isDanger ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#F39B9A]"} `}
         >
-          {budget && subtractBudget}
+          {budget && remaining}
+        </p>
+        <p
+          className={`text-3xl ${isOverBudget ? "text-red-700" : isDanger ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#F39B9A]"}`}
+        >
+          {isOverBudget
+            ? "Budget Exceeded!"
+            : isDanger
+              ? "Almost out of budget!"
+              : isWarning
+                ? "Watch your spending"
+                : "You're on track"}
         </p>
         <p className="text-2xl">
-          {budget} - {totalPriceProducts}
+          {budget} - {total}
         </p>
       </div>
 
