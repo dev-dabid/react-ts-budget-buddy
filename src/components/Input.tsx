@@ -29,6 +29,7 @@ const Input = ({
       min={minNum}
       max={maxNum}
       onChange={(e: ChangeEvent<HTMLInputElement>) => inputHandler(e)}
+      required
     />
   );
 };

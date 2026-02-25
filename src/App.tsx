@@ -135,7 +135,7 @@ const App = () => {
                 </div>
 
                 <button
-                  className="mt-2 bg-amber-300 px-3 py-1 rounded hover:bg-amber-400 text-sm"
+                  className="mt-2 bg-[#F39B9A] text-white px-3 py-1 rounded hover:bg-amber-400 text-sm"
                   onClick={() => removeCartItem(item.id)}
                 >
                   Remove
@@ -184,10 +184,10 @@ const App = () => {
 
                     <td className="p-3 text-center">
                       <button
-                        className="bg-amber-300 px-2 py-1 rounded hover:bg-amber-400 transition-colors text-sm"
+                        className="bg-[#F39B9A] text-white px-2 py-1 rounded hover:bg-amber-400 transition-colors text-sm"
                         onClick={() => removeCartItem(item.id)}
                       >
-                        remove
+                        Remove
                       </button>
                     </td>
                   </tr>
