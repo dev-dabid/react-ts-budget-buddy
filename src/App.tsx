@@ -71,6 +71,11 @@ const App = () => {
 
   const subtractBudget = budget - updateBudget;
 
+  const getPercentageOf = (percentage: number, total: number) =>
+    (percentage / 100) * total;
+
+  const isOvertheBudget = totalPriceProducts >= getPercentageOf(80, budget);
+
   return (
     <div className="flex justify-center flex-col items-center itim-regular p-2 max-w-300 mx-auto">
       <img src={bblogo} alt="" />
@@ -94,7 +99,9 @@ const App = () => {
 
       <div className="text-center mt-15">
         <p className="text-lg sm:text-2xl">Budget {`(-)`} minus Products</p>
-        <p className="text-5xl sm:text-7xl text-[#F39B9A]">
+        <p
+          className={`text-5xl sm:text-7xl ${isOvertheBudget ? "text-red-500" : "text-[#F39B9A]"} `}
+        >
           {budget && subtractBudget}
         </p>
         <p className="text-2xl">
