@@ -96,20 +96,22 @@ const App = () => {
       <div className="text-center mt-15">
         <p className="text-lg sm:text-2xl">Budget {`(-)`} minus Products</p>
         <p
-          className={`text-5xl sm:text-7xl ${isOverBudget ? "text-red-700" : isDanger ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#F39B9A]"} `}
+          className={`text-5xl sm:text-7xl ${budget === 0 ? "text-gray-500" : isOverBudget ? "text-red-700" : isDanger ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#F39B9A]"} `}
         >
           {budget && remaining}
         </p>
         <p
-          className={`text-3xl ${isOverBudget ? "text-red-700" : isDanger ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#F39B9A]"}`}
+          className={`text-3xl ${budget === 0 ? "text-gray-500" : isOverBudget ? "text-red-700" : isDanger ? "text-red-500" : isWarning ? "text-yellow-500" : "text-[#F39B9A]"}`}
         >
-          {isOverBudget
-            ? "Budget Exceeded!"
-            : isDanger
-              ? "Almost out of budget!"
-              : isWarning
-                ? "Watch your spending"
-                : "You're on track"}
+          {budget === 0
+            ? "Add your budget"
+            : isOverBudget
+              ? "Budget Exceeded!"
+              : isDanger
+                ? "Almost out of budget!"
+                : isWarning
+                  ? "Watch your spending"
+                  : "You're on track"}
         </p>
         <p className="text-2xl">
           {budget} - {total}
