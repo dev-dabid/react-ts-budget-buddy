@@ -212,7 +212,7 @@ const App = () => {
                     className="border-b last:border-0 hover:bg-gray-50 transition-colors"
                   >
                     <td className="p-4 text-center">{item.name}</td>
-                    <td className="p-4 text-center">₱{item.price}</td>
+                    <td className="p-4 text-center">{item.price}</td>
                     <td className="p-4 text-center">{item.quantity}</td>
                     <td className="p-4 text-center">
                       <button
